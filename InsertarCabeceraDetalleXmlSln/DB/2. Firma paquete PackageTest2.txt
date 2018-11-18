@@ -1,0 +1,5 @@
+create or replace package PackageTest2 as
+
+  PROCEDURE INS_CABECERADETALLE(P_STRXML IN CLOB, P_TRANSACCION_ID OUT NUMBER);
+  
+end PackageTest2;

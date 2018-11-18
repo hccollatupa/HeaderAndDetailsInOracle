@@ -1,0 +1,71 @@
+﻿@model InsertarCabeceraDetalleXml.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Save", "Home", FormMethod.Post, new { id = "MainForm" }))
+{
+    <h4>Cabecera</h4>
+    <table id="tableHeader" class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Fecha)
+            </td>
+        </tr>
+    </table>
+    <h4>Detalle</h4>
+    <table id="tableDetails" class="table">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                ProductId
+            </th>
+            <th>
+                IdCabecera
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Details)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCabecera)
+                </td>
+            </tr>
+        }
+    </table>
+    @*<button id="save" class="btn btn-primary">Salvar</button>*@
+    @*<input type="submit" value="Salvar" />*@
+
+    <div class="form-actions">
+        <button id="btnGuardar" class="btn btn-primary">Guardar</button>
+    </div>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.tabletojson.min.js"></script>
+    <script src="~/Scripts/Views/homeIndex.js"></script>
+}

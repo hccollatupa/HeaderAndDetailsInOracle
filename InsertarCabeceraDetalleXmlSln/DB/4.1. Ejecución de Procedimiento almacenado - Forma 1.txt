@@ -1,0 +1,11 @@
+var p_cod NUMBER;
+execute PackageTest2.INS_CABECERADETALLE(TO_CLOB('<Order>  <Id>1000</Id>  <Fecha>30-12-2016</Fecha>  <Details>    <OrderDetail>      <Id>1</Id>      <ProductId>100</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>    <OrderDetail>      <Id>2</Id>      <ProductId>200</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>    <OrderDetail>      <Id>3</Id>      <ProductId>300</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>  </Details></Order>'),:p_cod);
+print p_cod;
+
+DELETE FROM DETALLE;
+DELETE FROM CABECERA;
+COMMIT;
+
+SELECT * FROM CABECERA;
+SELECT * FROM DETALLE;
+

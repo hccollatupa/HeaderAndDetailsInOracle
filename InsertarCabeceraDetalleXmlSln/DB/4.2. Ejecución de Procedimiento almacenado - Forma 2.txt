@@ -1,0 +1,20 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+    I_STRXML          CLOB;
+    O_TRANSACCION_ID  NUMBER;
+BEGIN
+    I_STRXML := TO_CLOB('<Order>  <Id>1000</Id>  <Fecha>30-12-2016</Fecha>  <Details>    <OrderDetail>      <Id>1</Id>      <ProductId>100</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>    <OrderDetail>      <Id>2</Id>      <ProductId>200</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>    <OrderDetail>      <Id>3</Id>      <ProductId>300</ProductId>      <IdCabecera>0</IdCabecera>    </OrderDetail>  </Details></Order>');
+    PackageTest2.INS_CABECERADETALLE(
+        P_STRXML          => I_STRXML,
+        P_TRANSACCION_ID  => O_TRANSACCION_ID
+    );
+  DBMS_OUTPUT.PUT_LINE(O_TRANSACCION_ID);
+END;
+
+DELETE FROM DETALLE;
+DELETE FROM CABECERA;
+COMMIT;
+
+SELECT * FROM CABECERA;
+SELECT * FROM DETALLE;
